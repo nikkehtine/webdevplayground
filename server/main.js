@@ -1,3 +1,6 @@
-import projects from "./projects.js";
+import getProjects from "./projects.js";
+import parse from "./parse.js";
 
-console.log(projects());
+const projectsList = getProjects();
+
+console.log(projectsList, "\n", parse(projectsList));
