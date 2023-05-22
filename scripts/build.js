@@ -6,4 +6,6 @@ const getDirs = () => {
   return fs.readdirSync(path).filter((file) => fs.statSync(path + "/" + file).isDirectory());
 };
 
-process.env.projects = getDirs();
+process.env.PROJECT_LIST = getDirs();
+
+console.log(process.env.PROJECT_LIST);

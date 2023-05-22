@@ -9,5 +9,8 @@
   "keywords": [],
   "type": "module",
   "author": "nikkehtine",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

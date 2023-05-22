@@ -1,3 +1,3 @@
-const projects = process.env.projects;
+const projects = process.env.PROJECT_LIST;
 
 console.log(projects);
