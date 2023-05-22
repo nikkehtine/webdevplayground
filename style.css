@@ -4,6 +4,11 @@
 
 /* @import url("debug.css"); */
 
+:root {
+  --font-main: "Source Sans Pro", system-ui, sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +18,7 @@
 body {
   background-color: black;
   color: white;
-  font-family: "Source Sans Pro", system-ui, sans-serif;
+  font-family: var(--font-main);
   font-weight: 400;
   font-size: 16px;
   height: 100dvh;
@@ -43,7 +48,7 @@ header {
 #title span:nth-of-type(2) {
   align-self: flex-end;
   color: #808080;
-  font-family: "Roboto Mono", monospace;
+  font-family: var(--font-mono);
   font-weight: 600;
   font-size: 0.8rem;
 }
