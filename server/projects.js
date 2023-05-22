@@ -19,8 +19,12 @@ const getProjects = () => {
 
 function Project(project) {
   this.root = path.join(projectDir, project);
-  this.package = JSON.parse(fs.readFileSync(path.join(this.root, "package.json")));
-  this.entry = path.join(this.root, this.package.main);
+  const packageJson = JSON.parse(fs.readFileSync(path.join(this.root, "package.json")));
+
+  this.name = packageJson.name;
+  this.version = packageJson.version;
+  this.description = packageJson.description;
+  this.entry = path.join(this.root, packageJson.main);
 }
 
 getProjects();
