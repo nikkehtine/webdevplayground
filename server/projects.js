@@ -3,19 +3,18 @@ import * as path from "path";
 
 const projectDir = "projects";
 
-const projects = [];
-
-const getProjects = () => {
+export default function getProjects() {
   const contents = fs.readdirSync(projectDir);
+  const projects = [];
 
   for (let i = 0; i < contents.length; i++) {
-    console.log(i + ": " + contents[i]);
-
     if (fs.existsSync(path.join(projectDir, contents[i], "package.json"))) {
       projects.push(new Project(contents[i]));
     }
   }
-};
+
+  return projects;
+}
 
 function Project(project) {
   this.root = path.join(projectDir, project);
@@ -28,5 +27,3 @@ function Project(project) {
 }
 
 getProjects();
-
-console.log(projects);
