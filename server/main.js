@@ -3,4 +3,6 @@ import parse from "./parse.js";
 
 const projectsList = getProjects();
 
-console.log(projectsList, "\n", parse(projectsList));
+const renderedList = parse(projectsList);
+
+console.log(renderedList);
