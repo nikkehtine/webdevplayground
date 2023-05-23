@@ -1,14 +1,14 @@
 import * as fs from "node:fs";
 import * as path from "path";
 
-const projectDir = "projects";
+const projectsDir = process.env.projectsDir;
 
 export default function getProjects() {
-  const contents = fs.readdirSync(projectDir);
+  const contents = fs.readdirSync(projectsDir);
   const projects = [];
 
   for (let i = 0; i < contents.length; i++) {
-    if (fs.existsSync(path.join(projectDir, contents[i], "package.json"))) {
+    if (fs.existsSync(path.join(projectsDir, contents[i], "package.json"))) {
       projects.push(new Project(contents[i]));
     }
   }
@@ -17,7 +17,7 @@ export default function getProjects() {
 }
 
 function Project(project) {
-  this.root = path.join(projectDir, project);
+  this.root = path.join(projectsDir, project);
   const packageJson = JSON.parse(fs.readFileSync(path.join(this.root, "package.json")));
 
   this.name = packageJson.name;
