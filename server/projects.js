@@ -1,7 +1,8 @@
 import * as fs from "node:fs";
 import * as path from "path";
+import getConfigValue from "../config.js";
 
-const projectsDir = process.env.projectsDir;
+const projectsDir = getConfigValue("projectsDir");
 
 export default function getProjects() {
   const contents = fs.readdirSync(projectsDir);
