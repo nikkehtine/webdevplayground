@@ -2,15 +2,12 @@ import http from "http";
 
 export default function serve(list) {
   const server = http.createServer();
-  const url = request.url;
+  const routes = new Map();
 
-  server.on("request", (request, response) => {
-    switch (url) {
-      default:
-        // 404
-        break;
-    }
-  });
+  for (let i = 0; i < list.length; i++) {
+    var project = list[i];
+    routes.set(project.name, project.root);
+  }
+
+  console.log(routes);
 }
-
-function routes(list) {}
