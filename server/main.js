@@ -6,5 +6,3 @@ const projectsList = getProjects();
 const renderedList = parse(projectsList);
 
 serve(projectsList);
-
-console.log(renderedList);
