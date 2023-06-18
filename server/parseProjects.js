@@ -7,9 +7,13 @@ export default function parse(arr) {
 
   return projects;
 }
-
+/**
+ * Converts a Project object into a HTML string
+ * @param {Project} obj
+ * @returns {string} HTML
+ */
 function addEntry(obj) {
-  const title = `<p class="title">${obj.name} <span>${obj.version}</span></p>`;
+  const title = `<p class="title">${obj.fancyName} <span>${obj.version}</span></p>`;
   const description = `<p class="description">${obj.description}</p>`;
 
   function linkify(element) {
