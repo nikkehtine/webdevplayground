@@ -1,5 +1,5 @@
 import getProjects from "./projects.js";
-import parse from "./parse.js";
+import parse from "./parseProjects.js";
 
 const projectsList = getProjects();
 const renderedList = parse(projectsList);

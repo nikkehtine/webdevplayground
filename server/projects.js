@@ -24,7 +24,7 @@ function Project(project) {
   this.name = packageJson.name;
   this.version = packageJson.version;
   this.description = packageJson.description;
-  this.entry = path.join(this.root, packageJson.main);
+  this.entry = path.join(this.root, "index.html");
 }
 
 getProjects();
