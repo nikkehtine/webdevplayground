@@ -38,7 +38,7 @@ const routes = (list) => {
   const routeMap = new Map();
   for (let i = 0; i < list.length; i++) {
     var project = list[i];
-    routes.set(project.name, project.root);
+    routeMap.set(project.name, project.root);
   }
   return routeMap;
 };
