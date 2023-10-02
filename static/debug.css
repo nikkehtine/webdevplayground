@@ -1,15 +1,15 @@
 * {
-  border: 1px grey solid;
+    border: 1px grey solid;
 }
 
 header {
-  background-color: #212223;
+    background-color: #212223;
 }
 
 nav {
-  background-color: rgb(39, 50, 97);
+    background-color: rgb(39, 50, 97);
 }
 
 main {
-  background-color: #512649;
+    background-color: #512649;
 }
