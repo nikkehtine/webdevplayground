@@ -5,9 +5,9 @@ import (
 	"log"
 	"net/http"
 	"os"
-
-	"github.com/gorilla/mux"
 )
+
+var Projects []Project = getProjects()
 
 func main() {
 	port := os.Getenv("PORT")
@@ -15,18 +15,7 @@ func main() {
 		port = "3000"
 	}
 
-	fmt.Println(Projects)
-
-	r := mux.NewRouter()
-
-	r.PathPrefix("/static/").Handler(http.StripPrefix(
-		"/static/",
-		http.FileServer(http.Dir("./static")),
-	))
-	r.HandleFunc("/", RootHandler).Methods("GET")
-	r.HandleFunc("/{project}/", ProjectHandler)
-
-	http.Handle("/", r)
+	http.HandleFunc("/", handleFunction)
 
 	// Start the server
 	fmt.Printf("Starting server on port %s\n", port)

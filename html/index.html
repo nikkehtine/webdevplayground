@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playground - @nikkehtine</title>
     <link rel="stylesheet" href="/static/style.css" />
-    <script
-      src="https://unpkg.com/htmx.org@1.9.6"
-      integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
-      crossorigin="anonymous"
-    ></script>
   </head>
 
   <body>
@@ -38,14 +33,12 @@
 
     <main>
       {{ range . }}
-
       <a href="{{ .Name }}">
         <li class="project">
           <h1>{{ .FancyName }} <span>{{ .Version }}</span></h1>
           <p>{{ .Description }}</p>
         </li>
       </a>
-
       {{ end }}
     </main>
   </body>

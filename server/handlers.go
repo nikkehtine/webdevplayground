@@ -2,22 +2,29 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"net/http"
 	"text/template"
 )
 
-var Projects []Project = getProjects()
+func handleFunction(w http.ResponseWriter, r *http.Request) {
 
-func RootHandler(w http.ResponseWriter, r *http.Request) {
-	index := template.Must(template.ParseFiles("./html/index.html"))
-	err := index.Execute(w, Projects)
-	if err != nil {
-		fmt.Println(err)
+	if r.URL.Path == "/" {
+		index := template.Must(template.ParseFiles("./html/index.html"))
+		err := index.Execute(w, Projects)
+		if err != nil {
+			fmt.Println(err)
+		}
+		return
 	}
-}
 
-func ProjectHandler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	io.WriteString(w, "Hello World")
+	name := r.URL.Path[1:] // remove the leading "/"
+	for _, proj := range Projects {
+		if proj.Name == name {
+			http.ServeFile(w, r, proj.Entry)
+			return
+		}
+	}
+
+	w.WriteHeader(http.StatusNotFound)
+	http.ServeFile(w, r, "html/404.html")
 }
