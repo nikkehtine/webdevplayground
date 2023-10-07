@@ -5,6 +5,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {
@@ -13,12 +15,18 @@ func main() {
 		port = "3000"
 	}
 
-	// Serve static files
-	fileServer := http.FileServer(http.Dir("./static"))
-	http.Handle("/", fileServer)
+	fmt.Println(Projects)
 
-	// projects := getProjects()
-	// renderedList := parse(projects)
+	r := mux.NewRouter()
+
+	r.PathPrefix("/static/").Handler(http.StripPrefix(
+		"/static/",
+		http.FileServer(http.Dir("./static")),
+	))
+	r.HandleFunc("/", RootHandler).Methods("GET")
+	r.HandleFunc("/{project}/", ProjectHandler)
+
+	http.Handle("/", r)
 
 	// Start the server
 	fmt.Printf("Starting server on port %s\n", port)
