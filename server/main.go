@@ -15,9 +15,16 @@ func main() {
 		port = "3000"
 	}
 
-	http.HandleFunc("/", handleFunction)
+	mux := http.NewServeMux()
+	server := http.Server{
+		Addr:    fmt.Sprintf(":%s", port),
+		Handler: mux,
+	}
+	mux.HandleFunc("/", handleFunction)
 
 	// Start the server
 	fmt.Printf("Starting server on port %s\n", port)
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
+	log.Fatal(
+		server.ListenAndServe(),
+	)
 }
